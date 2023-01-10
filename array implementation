@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+int a[100],n,i;
+
+void insertion(){
+	int ele,pos;
+	printf("enter the number of elements: ");
+	scanf("%d",&n);
+	printf("enter the values: ");
+	for(i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	printf("enter the elemnt: ");
+	scanf("%d",&ele);
+	printf("enter the position: ");
+	scanf("%d",&pos);
+	for(i=n;i>pos;i--){
+		a[i]=a[i-1];
+	}	
+	a[pos]=ele;
+}
+	
+}
+void display()
+{
+	for(i=0;i<=n;i++)
+		printf("%d\t ",a[i]);
+	
+	
+}
+
+int main(){
+	int choice;
+	do{
+		printf("\n1.insertion\n2.deletion\n3.display\n4.exit");
+		printf("\nenter the choice: ");
+		scanf("%d",&choice);
+		switch(choice){
+			case 1: insertion(); break;
+		//	case 2: deletion(); break;
+			case 3: display(); break;
+			case 4: exit(0); break;
+			default:	printf("enter the values between 1 to 4: ");
+		}
+	}while(choice>0 && choice<=4);
+}
