@@ -1,0 +1,128 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+struct node{
+	int data;
+	struct node *next;
+}*head= NULL,*p,*t,*newnode;
+void create_sll(){
+	int ele,i,n,null;
+	printf("enter the number of elements: ");
+	scanf("%d",&n);
+	for(i=1;i<=n;i++){
+		printf("enter the elements: ");
+		scanf("%d",&ele);
+		newnode=(struct node*)malloc(sizeof(struct node));
+		newnode->data=ele;
+		newnode->next=NULL;
+		if(head==NULL){
+			head=newnode;
+			p=newnode;
+		}else{
+			for(p=head;p->next!=NULL;p=p->next);
+			p->next=newnode;
+			p=newnode;
+		}
+	}
+}
+void sll_ins_begi(){
+	int ele;
+	printf("enter the element: ");
+	scanf("%d",&ele);
+	newnode=(struct node*)malloc(sizeof(struct node));
+	newnode->data=ele;
+	newnode->next=NULL;
+	p=head;
+	head=newnode;
+	newnode->next=p;
+	p=newnode;
+	}
+void sll_ins_end(){
+	int ele;
+	printf("enter the element: ");
+	scanf("%d",&ele);
+	newnode=(struct node*)malloc(sizeof(struct node));
+	newnode->data=ele;
+	newnode->next=NULL;
+	for(p=head;p->next!=NULL;p=p->next);
+	p->next=newnode;
+	p=newnode;
+	}
+void ins_a_any_pos(){
+	int ele,pos,i;
+	printf("enter the element: ");
+	scanf("%d",&ele);
+	printf("enter the position: ");
+	scanf("%d",&pos);
+	newnode=(struct node*)malloc(sizeof(struct node));
+	newnode->data=ele;
+	newnode->next=NULL;
+	for(p=head,i=1;i<pos;p=p->next,i++){
+		t=p;
+	}
+	t->next=newnode;
+	newnode->next=p;
+	p=newnode;
+	}
+	void del_at_begi(){
+		p=head;
+		head=p->next;
+		free(p);
+		p=head;
+	}
+void del_at_end(){
+	for(p=head;p->next!=NULL;p=p->next){
+		t=p;
+	}
+	t->next=NULL;
+	free(p);
+	p=t;
+}
+void del_at_any_pos(){
+	int pos,i;
+	printf("enter the position: ");
+	scanf("%d",&pos);
+	for(p=head,i=1;i<pos;p=p->next,i++){
+		t=p;
+	}
+	t->next=p->next;
+	free(p);
+	p=t;
+}
+void display(){
+	if(head==NULL){
+		printf("sll is empty");
+	}else{
+		for(p=head;p!=NULL;p=p->next){
+			printf("%d--> ",p->data);
+		}
+	}
+}
+int main(){
+	int cho;
+	do{
+		printf("\n1. creat\n2. display\n3. insert at beginning.\n4.insert at the end.\n5 insert at any position.\n6.delete at beginning.\n7.delete at the end.\n8 del at any pos.\n9.exit\n");
+		printf("enter the choice: ");
+		scanf("%d",&cho);
+		switch(cho){
+			case 1: create_sll();
+			break;
+			case 2: display();
+			break;
+			case 3: sll_ins_begi();
+			break;
+			case 4: sll_ins_end();
+			break;
+			case 5: ins_a_any_pos();
+			break;
+			case 6: del_at_begi();
+			break;
+			case 7: del_at_end();
+			break;
+			case 8: del_at_any_pos();
+			break;
+			case 9: exit(0);
+			default: printf("choose the choice between 1 to 9");
+		}
+	}while(cho>0 && cho<10);
+	}
